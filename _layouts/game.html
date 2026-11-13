@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<article class="game" style="--accent: {{ page.color | default: '#E8312A' }}">
+  <a class="back" href="{{ '/' | relative_url }}">&larr; All games</a>
+  <div class="game-hero">
+    <span class="game-chip" aria-hidden="true"></span>
+    <h1>{{ page.name_display }}</h1>
+    {% if page.players or page.ages %}
+    <p class="facts">
+      {% if page.players %}<span>{{ page.players }} players</span>{% endif %}
+      {% if page.ages %}<span>Ages {{ page.ages }}</span>{% endif %}
+      {% if page.publisher %}<span>{{ page.publisher }}</span>{% endif %}
+    </p>
+    {% endif %}
+  </div>
+
+  <a class="rules-button" href="{{ page.rules }}" target="_blank" rel="noopener">
+    <span class="rules-icon" aria-hidden="true">&#128214;</span>
+    <span>
+      <strong>Open the official rules</strong>
+      <small>{{ page.rules_label | default: 'From the publisher' }}</small>
+    </span>
+  </a>
+
+  {% if page.photo %}
+  <img class="game-photo" src="{{ page.photo | relative_url }}" alt="{{ page.name_display }} card box">
+  {% endif %}
+
+  {% if content != "" %}
+  <div class="game-notes">
+    {{ content }}
+  </div>
+  {% endif %}
+</article>

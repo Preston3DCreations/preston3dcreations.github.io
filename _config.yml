@@ -1,0 +1,32 @@
+# ------------------------------------------------------------------
+#  Preston 3D Creations - card game rules site
+#  Edit the values below, then commit. The site rebuilds in ~1 minute.
+# ------------------------------------------------------------------
+title: Preston 3D Creations
+tagline: Game rules for your 3D printed card box
+url: "https://preston3dcreations.github.io"
+baseurl: ""
+
+# Your shop links. Leave a value empty ("") to hide that button.
+links:
+  etsy: ""          # e.g. https://www.etsy.com/shop/YourShopName
+  makerworld: ""    # e.g. https://makerworld.com/en/@yourname
+  facebook: ""      # e.g. a link to your Facebook Marketplace profile or page
+  email: ""         # e.g. you@example.com
+
+# Each game is one file in the _games folder (see README.md).
+collections:
+  games:
+    output: true
+    permalink: /:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: games
+    values:
+      layout: game
+
+exclude:
+  - README.md
+  - qr/

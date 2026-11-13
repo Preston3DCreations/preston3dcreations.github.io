@@ -1,0 +1,23 @@
+---
+layout: default
+title: Game rules
+---
+<section class="intro">
+  <h1>Card game rules</h1>
+  <p>Scanned the code on your card box? Pick your game below for the official rules.</p>
+</section>
+{% assign games = site.games | sort: "name_display" %}
+<ul class="game-list">
+  {% for g in games %}
+  <li>
+    <a class="game-card" href="{{ g.url | relative_url }}" style="--accent: {{ g.color | default: '#E8312A' }}">
+      <span class="game-chip" aria-hidden="true"></span>
+      <span class="game-card-text">
+        <strong>{{ g.name_display }}</strong>
+        {% if g.players %}<small>{{ g.players }} players{% if g.ages %} &middot; ages {{ g.ages }}{% endif %}</small>{% endif %}
+      </span>
+      <span class="arrow" aria-hidden="true">&rsaquo;</span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

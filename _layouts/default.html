@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.name_display %}{{ page.name_display }} rules | {% elsif page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{% if page.name_display %}Official {{ page.name_display }} rules, plus card boxes by {{ site.title }}.{% else %}{{ site.tagline }}{% endif %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-text">{{ site.title }}</span>
+    </a>
+  </header>
+  <main class="wrap">
+    {{ content }}
+  </main>
+  <footer class="site-footer wrap">
+    {% assign l = site.links %}
+    {% if l.etsy != "" or l.makerworld != "" or l.facebook != "" %}
+    <p class="footer-title">Want a box for another game?</p>
+    <div class="shop-links">
+      {% if l.etsy != "" %}<a class="pill" href="{{ l.etsy }}" target="_blank" rel="noopener">Etsy shop</a>{% endif %}
+      {% if l.makerworld != "" %}<a class="pill" href="{{ l.makerworld }}" target="_blank" rel="noopener">MakerWorld</a>{% endif %}
+      {% if l.facebook != "" %}<a class="pill" href="{{ l.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif %}
+    </div>
+    {% endif %}
+    {% if l.email != "" %}<p class="small">Questions or a broken link? <a href="mailto:{{ l.email }}">{{ l.email }}</a></p>{% endif %}
+    <p class="small muted">Card boxes designed and printed by {{ site.title }}. Rules are hosted by each game's publisher.
+    We are not affiliated with the publishers; game names are trademarks of their respective owners.</p>
+  </footer>
+</body>
+</html>
